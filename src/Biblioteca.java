@@ -82,5 +82,25 @@ public class Biblioteca {
         return registrado;
     }
 
+    /** BORRAR_LIBRO
+     *
+     * @param idLibro
+     * @return
+     */
+    public Libro borrarLibro(int idLibro) {
+        int posicionLibro = -1;
+        Libro book = null;
+
+        //todo crear metodo que devuelva la posicion del libro en ele array
+        posicionLibro = localizarLibro(idLibro);
+
+        if (posicionLibro >= 0 && posicionLibro < CANT_MAX_LIBROS) {
+            book = catalogo[posicionLibro];
+            catalogo[posicionLibro] = null;
+        }
+
+        return book;
+    }
+
     //Gets
 }
