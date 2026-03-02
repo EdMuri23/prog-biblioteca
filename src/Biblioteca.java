@@ -15,7 +15,7 @@ public class Biblioteca {
 
     }
 
-    /**Buscar_LIBRO
+    /**BUSCAR_LIBRO
      *
      * @param codigoLibro
      * @return
@@ -33,6 +33,26 @@ public class Biblioteca {
             i++;
         }
         return Libro;
+    }
+
+    /**LOCALIZAR_LIBRO
+     *
+     * @param codigoLibro
+     * @return
+     */
+    private int localizarLibro(int codigoLibro) {
+        boolean libroLocalizado = false;
+        int posicion = -1;
+        int i = 0;
+
+        while (i < CANT_MAX_LIBROS && !libroLocalizado) {
+            if (catalogo[i] != null && catalogo[i].getId() == codigoLibro) {
+                libroLocalizado = true;
+                posicion = i;
+            }
+            i++;
+        }
+        return posicion;
     }
 
     /**BUSCAR_PRIMER_HUECO_LIBRE
@@ -91,7 +111,6 @@ public class Biblioteca {
         int posicionLibro = -1;
         Libro book = null;
 
-        //todo crear metodo que devuelva la posicion del libro en ele array
         posicionLibro = localizarLibro(idLibro);
 
         if (posicionLibro >= 0 && posicionLibro < CANT_MAX_LIBROS) {
