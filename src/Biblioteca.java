@@ -121,5 +121,30 @@ public class Biblioteca {
         return book;
     }
 
-    //Gets
+    public boolean modificarNumPaginas(int idLibro, int numPaginas) {
+        boolean numPagsActualizado = false;
+        Libro book;
+
+        book = buscarLibro(idLibro);
+
+        if (book != null) {
+            numPagsActualizado = book.cambiarNumPags(numPaginas);
+        }
+
+        return numPagsActualizado;
+    }
+
+    public String imprimirCatalogo() {
+        StringBuilder informCatalogo = new StringBuilder("Catalogo: ");
+
+        for (int i = 0; i < CANT_MAX_LIBROS; i++) {
+            if (catalogo[i] != null){
+                informCatalogo.append(catalogo[i].toString());
+            }
+        }
+        informCatalogo.append("\n");
+
+        return informCatalogo.toString();
+    }
+
 }
