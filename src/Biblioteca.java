@@ -15,6 +15,11 @@ public class Biblioteca {
 
     }
 
+    /**Buscar_LIBRO
+     *
+     * @param codigoLibro
+     * @return
+     */
     private Libro buscarLibro(int codigoLibro) {
         boolean libroEncontrado = false;
         Libro Libro = null;
@@ -47,6 +52,34 @@ public class Biblioteca {
             i++;
         }
         return posicionPrimerHuecoLibre;
+    }
+
+    /** REGISTRAR_LIBRO:
+     * Recibe y añade un libro no duplicado
+     * @param book
+     * @return true (registrado correctamente) o false (no registrado)
+     */
+    public boolean registrarLibro(Libro book) {
+        boolean registrado = false;
+        Libro l = null;
+        int posicion = -1;
+
+        l = buscarLibro(book.getId());
+
+        //1º Llamamos a buscarSocio para comprobar si el Libro ya esta en el Catalogo
+        if (l != null) {
+            //Si no existe buscamos el primer hueco vacio del array catalogo
+            posicion = buscarPrimerHuecoLibre();
+            //2º Comprobamos que si hay hueco libre
+            if (posicion != -1) {
+                //Guardamos el libro en el catalogo
+                catalogo[posicion] = book;
+                //Declaramos que si se ha registrado el libro correctamente
+                registrado = true;
+            }
+        }
+
+        return registrado;
     }
 
     //Gets
