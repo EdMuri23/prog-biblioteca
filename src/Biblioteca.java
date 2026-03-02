@@ -15,7 +15,7 @@ public class Biblioteca {
 
     }
 
-    private Libro buscarSala(int codigoLibro) {
+    private Libro buscarLibro(int codigoLibro) {
         boolean libroEncontrado = false;
         Libro Libro = null;
         int i = 0;
